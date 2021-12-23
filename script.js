@@ -85,10 +85,3 @@ const define = {
     "import-function":ImportFunction,
     "math-calc":MathCalc
 }
-for(tag in define){
-    try {
-        customElements.define(tag,define[tag])
-    } catch (error) {
-        alert(error)
-    }
-}
