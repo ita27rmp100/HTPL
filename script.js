@@ -1,6 +1,5 @@
 // data 
 let vars = {}
-let functions = {}
 // classes
 class Var extends HTMLElement{
     connectedCallback(){
