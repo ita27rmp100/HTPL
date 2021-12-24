@@ -75,7 +75,7 @@ class MathCalc extends HTMLElement{
     }
 }
 // define tags
-const define = {
+const tags = {
     "new-var":Var,
     "print-eval":Print,
     "alert-thing":Alert,
