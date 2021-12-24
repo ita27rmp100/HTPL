@@ -84,3 +84,6 @@ const define = {
     "import-function":ImportFunction,
     "math-calc":MathCalc
 }
+for (tag in tags){
+    customElements.define(tag,tags[tag])
+}
