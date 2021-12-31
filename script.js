@@ -1,74 +1,74 @@
 // data 
 let vars = {}
 // classes
-class Var extends HTMLElement{
+class Var extends HTMLElement {
     connectedCallback(){
         let variable = this.getAttribute("var")
         let value = this.getAttribute("value")
-        vars[variable]=eval(value)
+        vars[variable] = eval(value)
     }
 }
-class Print extends HTMLElement{
-    connectedCallback(){
+class Print extends HTMLElement {
+    connectedCallback() {
         let txt = this.getAttribute("txt")
         this.innerHTML = eval(txt)
     }
 }
-class Alert extends HTMLElement{
-    connectedCallback(){
+class Alert extends HTMLElement {
+    connectedCallback() {
         let mode = this.getAttribute("mode") ;
-        var txt = this.getAttribute("txt")
+        let txt = this.getAttribute("txt")
         switch (mode) {
             case "alert":
                 alert(txt)
                 break;
             case "prompt":
-                vars["prompt"]=prompt(txt)
+                vars["prompt"] = prompt(txt)
                 break;
             case "confirm":
-                vars["confirm"]=confirm(txt)
+                vars["confirm"] = confirm(txt)
                 break;
             default:
                 break;
         }
     }
 }
-class Condition extends HTMLElement{
-    render(){
+class Condition extends HTMLElement {
+    render() {
         let condition = this.getAttribute("condition");
-        if (eval(condition)){
+        if (eval(condition)) {
             this.innerHTML
             this.hidden = false
         }
-        else{
+        else {
             this.hidden = true
         }
     }
-    connectedCallback(){
+    connectedCallback() {
         this.render()
     }
-    static get ObservedAttributes(){
+    static get ObservedAttributes() {
         return ["condition"]
     }
-    attributeChangedCallback(name, oldValue, newValue){
+    attributeChangedCallback(name, oldValue, newValue) {
         this.render()
     }
 }
-class CreateFunction extends HTMLElement{
-    connectedCallback(){
+class CreateFunction extends HTMLElement {
+    connectedCallback() {
         let create = this.getAttribute("create")
-        if(create!=undefined){
+        if (create!=undefined) {
             this.hidden = true
         }
     }
 }
-class ImportFunction extends HTMLElement{
-    connectedCallback(){
+class ImportFunction extends HTMLElement {
+    connectedCallback() {
         this.innerHTML = document.getElementById(this.id).innerHTML
     }
 }
-class MathCalc extends HTMLElement{
-    connectedCallback(){
+class MathCalc extends HTMLElement {
+    connectedCallback() {
         let element = this.getAttribute("elem")
         let opp = this.getAttribute('opp')
         this.innerHTML = eval("Math."+element+"("+opp+")")
@@ -84,6 +84,6 @@ const tags = {
     "import-function":ImportFunction,
     "math-calc":MathCalc
 }
-for (tag in tags){
+for (let tag in tags) {
     customElements.define(tag,tags[tag])
 }
