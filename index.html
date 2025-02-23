@@ -5,19 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="jquery-3.7.0.min.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <math-calc elem="abs"opp="5-2-100"></math-calc> 
-    <new-var var="a" value="Number(15)"></new-var>
-    <new-var var="a" value="Number(2)"></new-var>
-    <new-function id="fun" create="">
-        <alert-msg txt="Are you programmer ?" mode="prompt"></alert-msg>
-        <if-condition condition="vars.prompt == 'yes'">
-            <print-eval txt="'hello'"></print-eval>
-        </if-condition>
-    </new-function>
-    <import-function id="fun"></import-function>
+    <use-procedure name="fun" type="declare">
+        <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
+        <new-alrt txt="Are you programmer ?" mode="prompt"></new-alrt>
+    </use-procedure>
+    <math-calc ope="6-4"></math-calc>
+    <use-procedure name="fun" type="define"></use-procedure>
+
+    <use-procedure name="fun" type="define"></use-procedure>
+    <script src="script.js"></script>
 </body>
 </html>

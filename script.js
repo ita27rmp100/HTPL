@@ -1,5 +1,6 @@
 // data 
 let vars = {}
+let procedures = {}
 // classes
 class Var extends HTMLElement{
     connectedCallback(){
@@ -10,8 +11,10 @@ class Var extends HTMLElement{
 }
 class Print extends HTMLElement{
     connectedCallback(){
-        let txt = this.getAttribute("txt")
-        this.innerHTML = eval(txt)
+        //let txt = this.getAttribute("txt")
+        let content = this.innerText.trim()
+        console.log(eval(content))
+        this.innerText = eval(content)
     }
 }
 class Alert extends HTMLElement{
@@ -39,9 +42,13 @@ class Condition extends HTMLElement{
         if (eval(condition)){
             this.innerHTML
             this.hidden = false
+            console.log(document.getElementById(this.getAttribute("else")));
+            $(`#${this.getAttribute("else")}`).remove()
         }
         else{
             this.hidden = true
+            document.getElementById(this.getAttribute("else")).style.display = "block"
+            console.log(document.getElementById(this.getAttribute("else")));
         }
     }
     connectedCallback(){
@@ -54,34 +61,60 @@ class Condition extends HTMLElement{
         this.render()
     }
 }
-class CreateFunction extends HTMLElement{
+class NotCondition extends HTMLElement{
+    render(){
+    }
     connectedCallback(){
-        let create = this.getAttribute("create")
-        if(create!=undefined){
-            this.hidden = true
-        }
+        this.render()
+    }
+    static get ObservedAttributes(){
+        return ["style"]
+    }
+    attributeChangedCallback(name, oldValue, newValue){
+        this.render()
     }
 }
-class ImportFunction extends HTMLElement{
-    connectedCallback(){
-        this.innerHTML = document.getElementById(this.id).innerHTML
+
+class Procedure extends HTMLElement {
+    connectedCallback() {
+        let name = this.getAttribute("name");
+        let type = this.getAttribute("type");
+
+        if (!name){
+            name="undefined"
+        }
+        if(!type){
+            type = "declare"
+        }
+        if (type == "declare") {
+            procedures[name] = this.innerHTML;
+            $(this).find("*").remove()
+        } else if (type == "define") {
+            if (procedures[name]) {
+                this.innerHTML = procedures[name];
+            } else {
+                this.innerHTML = null ;
+            }
+        }
     }
 }
 class MathCalc extends HTMLElement{
     connectedCallback(){
-        let element = this.getAttribute("elem")
-        let opp = this.getAttribute('opp')
-        this.innerHTML = eval("Math."+element+"("+opp+")")
+        if (String(this.getAttribute("lib")) =="true") {
+            this.innerHTML = eval("Math."+this.getAttribute("elem")+"("+this.getAttribute('ope')+")")   
+        } else {
+            this.innerHTML = eval(this.getAttribute('ope'))   
+        }
     }
 }
 // define tags
 const tags = {
     "new-var":Var,
     "print-eval":Print,
-    "alert-msgg":Alert,
+    "new-alrt":Alert,
     "if-condition":Condition,
-    "new-function":CreateFunction,
-    "import-function":ImportFunction,
+    "if-not":NotCondition,
+    "use-procedure":Procedure,
     "math-calc":MathCalc
 }
 for (tag in tags){
