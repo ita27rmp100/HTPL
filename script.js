@@ -19,16 +19,11 @@ class Const extends HTMLElement {
 class Condition extends HTMLElement{
     render(){
         let condition = this.getAttribute("condition");
-        if (eval(condition)){
-            this.innerHTML
-            this.hidden = false
-            console.log(document.getElementById(this.getAttribute("else")));
-            $(`#${this.getAttribute("else")}`).remove()
-        }
-        else{
-            this.hidden = true
-            document.getElementById(this.getAttribute("else")).style.display = "block"
-            console.log(document.getElementById(this.getAttribute("else")));
+        let content = this.innerHTML
+        let state = this.getAttribute("state")
+        this.innerHTML = ''
+        if (String(eval(condition))==state){
+            this.innerHTML = content
         }
     }
     connectedCallback(){
@@ -36,19 +31,6 @@ class Condition extends HTMLElement{
     }
     static get ObservedAttributes(){
         return ["condition"]
-    }
-    attributeChangedCallback(name, oldValue, newValue){
-        this.render()
-    }
-}
-class NotCondition extends HTMLElement{
-    render(){
-    }
-    connectedCallback(){
-        this.render()
-    }
-    static get ObservedAttributes(){
-        return ["style"]
     }
     attributeChangedCallback(name, oldValue, newValue){
         this.render()
@@ -147,7 +129,6 @@ const tags = {
     "def-const":Const,
     // pb
     "if-condition":Condition,
-    "if-not":NotCondition,
     "repeate-times":Repeate,
     // mo
     "use-procedure":Procedure,

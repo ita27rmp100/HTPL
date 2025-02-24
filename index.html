@@ -9,12 +9,15 @@
     <title>Document</title>
 </head>
 <body>
-    <new-var var="i" value="4"></new-var>
-    <print-eval>"added var successfully"</print-eval>
-    <while-do condition="i!=0">
-        <new-var var="i" value="vars['i'] -= 1"></new-var>
-        <print-eval>vars["i"]</print-eval>
-    </while-do>
+    <use-var var="i" value="4"></use-var>
+    <if-condition condition="vars['i']<6" state="true">
+        <print-eval>"added var successfully"</print-eval>
+    </if-condition>
+    <if-condition condition="vars['i']<6" state="false">
+        <print-eval>"Not successfully"</print-eval>
+    </if-condition>
+        <!-- <new-var var="i" value="vars['i'] -= 1"></new-var>
+        <print-eval>vars["i"]</print-eval> -->
     <!-- <repeate-times times="4">
         <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
     </repeate-times> -->
