@@ -68,18 +68,6 @@ class Repeate extends HTMLElement{
         execute(this.getAttribute("times"))
     } 
 }
-class UnknownRepeatedTimes{
-    connectedCallback(){
-        let iHTML = this.innerHTML
-        let execute = (cond) =>{
-            if(cond){
-                this.innerHTML += iHTML
-                execute(cond)
-            }
-        } 
-        execute(this.getAttribute("condition"))
-    }
-}
     // MODULES
 class Procedure extends HTMLElement {
     connectedCallback() {
@@ -116,27 +104,38 @@ class MathCalc extends HTMLElement{
 }
     // predefined functions-tags
 class Print extends HTMLElement{
-    connectedCallback(){
+    render(){
         let iHTML = this.innerHTML
         this.innerHTML = eval(iHTML)
+    }
+    connectedCallback(){
+        this.render()
+    }
+    static get ObservedAttributes(){
+        return ["condition"]
+    }
+    attributeChangedCallback(name, oldValue, newValue){
+        this.render()
     }
 }
 class Alert extends HTMLElement{
     connectedCallback(){
         let mode = this.getAttribute("mode") ;
         var txt = this.getAttribute("txt")
-        switch (mode) {
-            case "alert":
-                alert(txt)
-                break;
-            case "prompt":
-                vars["prompt"]=prompt(txt)
-                break;
-            case "confirm":
-                vars["confirm"]=confirm(txt)
-                break;
-            default:
-                break;
+        if (!$(this).parent().is("[type='declare']")) {
+            switch (mode) {
+                case "alert":
+                    alert(txt)
+                    break;
+                case "prompt":
+                    vars["prompt"]=prompt(txt)
+                    break;
+                case "confirm":
+                    vars["confirm"]=confirm(txt)
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
@@ -145,12 +144,11 @@ class Alert extends HTMLElement{
 const tags = {
     // ds
     "use-var":Var,
-    "def-const":Const;
+    "def-const":Const,
     // pb
     "if-condition":Condition,
     "if-not":NotCondition,
     "repeate-times":Repeate,
-    "while-do":UnknownRepeatedTimes,
     // mo
     "use-procedure":Procedure,
     // mf
@@ -160,6 +158,5 @@ const tags = {
     "new-alrt":Alert
 }
 for(tag in tags){
-    console.log(tag,tags[tag])
     customElements.define(tag,tags[tag])
 }
