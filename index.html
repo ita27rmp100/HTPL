@@ -9,13 +9,23 @@
     <title>Document</title>
 </head>
 <body>
-    <use-procedure name="fun" type="declare">
+    <new-var var="i" value="4"></new-var>
+    <while-do condition="i!=0">
+        <new-var var="i" value="vars[vars.indexOf(i)] = -1"></new-var>
+    </while-do>
+    <repeate-times times="4">
+        <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
+    </repeate-times>
+    <while-do consiton="">
+
+    </while-do>
+    <!-- <use-procedure name="fun" type="declare">
         <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
         <new-alrt txt="Are you programmer ?" mode="prompt"></new-alrt>
     </use-procedure>
     <math-calc ope="6-4"></math-calc>
     <use-procedure name="fun" type="define"></use-procedure>
-    <use-procedure name="fun" type="define"></use-procedure>
+    <use-procedure name="fun" type="define"></use-procedure> -->
     <script src="script.js"></script>
 </body>
 </html>

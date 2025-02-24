@@ -52,7 +52,31 @@ class NotCondition extends HTMLElement{
     }
 }
         // LOOPS
-
+class Repeate extends HTMLElement{
+    connectedCallback(){
+        let iHTML = this.innerHTML
+        this.innerHTML = ''
+        let execute = (n) =>{
+            if (n!=0) {
+                this.innerHTML += iHTML
+                execute(n-1)
+            }
+        }
+        execute(this.getAttribute("times"))
+    } 
+}
+class UnknownRepeatedTimes{
+    connectedCallback(){
+        let iHTML = this.innerHTML
+        let execute = (cond) =>{
+            if(cond){
+                this.innerHTML += iHTML
+                execute(cond)
+            }
+        } 
+        execute(this.getAttribute("condition"))
+    }
+}
     // MODULES
 class Procedure extends HTMLElement {
     connectedCallback() {
@@ -118,15 +142,21 @@ class Alert extends HTMLElement{
 
 // DEFINE DECLARED TAGS
 const tags = {
+    // ds
     "new-var":Var,
-    "print-eval":Print,
-    "new-alrt":Alert,
+    // pb
     "if-condition":Condition,
     "if-not":NotCondition,
+    "repeate-times":Repeate,
+    "while-do":UnknownRepeatedTimes,
+    // mo
     "use-procedure":Procedure,
-    "math-calc":MathCalc
+    // mf
+    "math-calc":MathCalc,
+    // pre
+    "print-eval":Print,
+    "new-alrt":Alert
 }
-
-for (tag in tags){
+for(tag in tags){
     customElements.define(tag,tags[tag])
 }
