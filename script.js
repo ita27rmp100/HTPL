@@ -1,7 +1,9 @@
 // data 
 let vars = {}
+let consts = {}
 let procedures = {}
-// classes
+//***** DECLARE CLASSES *****//
+    // DATA STARUTURE CLASSES
 class Var extends HTMLElement{
     connectedCallback(){
         let variable = this.getAttribute("var")
@@ -9,33 +11,8 @@ class Var extends HTMLElement{
         vars[variable]=eval(value)
     }
 }
-class Print extends HTMLElement{
-    connectedCallback(){
-        //let txt = this.getAttribute("txt")
-        let content = this.innerText.trim()
-        console.log(eval(content))
-        this.innerText = eval(content)
-    }
-}
-class Alert extends HTMLElement{
-    connectedCallback(){
-        let mode = this.getAttribute("mode") ;
-        var txt = this.getAttribute("txt")
-        switch (mode) {
-            case "alert":
-                alert(txt)
-                break;
-            case "prompt":
-                vars["prompt"]=prompt(txt)
-                break;
-            case "confirm":
-                vars["confirm"]=confirm(txt)
-                break;
-            default:
-                break;
-        }
-    }
-}
+    // PROGRAMMING NASICS
+        // CONDITION STATEMENTS
 class Condition extends HTMLElement{
     render(){
         let condition = this.getAttribute("condition");
@@ -74,7 +51,9 @@ class NotCondition extends HTMLElement{
         this.render()
     }
 }
+        // LOOPS
 
+    // MODULES
 class Procedure extends HTMLElement {
     connectedCallback() {
         let name = this.getAttribute("name");
@@ -98,6 +77,7 @@ class Procedure extends HTMLElement {
         }
     }
 }
+    // MATH OPERATIONS TAG
 class MathCalc extends HTMLElement{
     connectedCallback(){
         if (String(this.getAttribute("lib")) =="true") {
@@ -107,7 +87,36 @@ class MathCalc extends HTMLElement{
         }
     }
 }
-// define tags
+    // predefined functions-tags
+class Print extends HTMLElement{
+    connectedCallback(){
+        //let txt = this.getAttribute("txt")
+        let content = this.innerText.trim()
+        console.log(eval(content))
+        this.innerText = eval(content)
+    }
+}
+class Alert extends HTMLElement{
+    connectedCallback(){
+        let mode = this.getAttribute("mode") ;
+        var txt = this.getAttribute("txt")
+        switch (mode) {
+            case "alert":
+                alert(txt)
+                break;
+            case "prompt":
+                vars["prompt"]=prompt(txt)
+                break;
+            case "confirm":
+                vars["confirm"]=confirm(txt)
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+// DEFINE DECLARED TAGS
 const tags = {
     "new-var":Var,
     "print-eval":Print,
@@ -117,6 +126,7 @@ const tags = {
     "use-procedure":Procedure,
     "math-calc":MathCalc
 }
+
 for (tag in tags){
     customElements.define(tag,tags[tag])
 }
