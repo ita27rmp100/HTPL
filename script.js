@@ -4,11 +4,14 @@ let consts = {}
 let procedures = {}
 //***** DECLARE CLASSES *****//
     // DATA STARUTURE CLASSES
-class Var extends HTMLElement{
-    connectedCallback(){
-        let variable = this.getAttribute("var")
-        let value = this.getAttribute("value")
-        vars[variable]=eval(value)
+class Var extends HTMLElement {
+    connectedCallback() {
+        vars[this.getAttribute("var")] = eval(this.getAttribute("value"));
+    }
+}
+class Const extends HTMLElement {
+    connectedCallback() {
+        consts[this.getAttribute("var")] = eval(this.getAttribute("value"))
     }
 }
     // PROGRAMMING NASICS
@@ -114,10 +117,8 @@ class MathCalc extends HTMLElement{
     // predefined functions-tags
 class Print extends HTMLElement{
     connectedCallback(){
-        //let txt = this.getAttribute("txt")
-        let content = this.innerText.trim()
-        console.log(eval(content))
-        this.innerText = eval(content)
+        let iHTML = this.innerHTML
+        this.innerHTML = eval(iHTML)
     }
 }
 class Alert extends HTMLElement{
@@ -143,7 +144,8 @@ class Alert extends HTMLElement{
 // DEFINE DECLARED TAGS
 const tags = {
     // ds
-    "new-var":Var,
+    "use-var":Var,
+    "def-const":Const;
     // pb
     "if-condition":Condition,
     "if-not":NotCondition,
@@ -158,5 +160,6 @@ const tags = {
     "new-alrt":Alert
 }
 for(tag in tags){
+    console.log(tag,tags[tag])
     customElements.define(tag,tags[tag])
 }

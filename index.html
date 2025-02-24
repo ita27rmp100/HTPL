@@ -10,15 +10,14 @@
 </head>
 <body>
     <new-var var="i" value="4"></new-var>
+    <print-eval>"added var successfully"</print-eval>
     <while-do condition="i!=0">
-        <new-var var="i" value="vars[vars.indexOf(i)] = -1"></new-var>
+        <new-var var="i" value="vars['i'] -= 1"></new-var>
+        <print-eval>vars["i"]</print-eval>
     </while-do>
-    <repeate-times times="4">
+    <!-- <repeate-times times="4">
         <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
-    </repeate-times>
-    <while-do consiton="">
-
-    </while-do>
+    </repeate-times> -->
     <!-- <use-procedure name="fun" type="declare">
         <math-calc elem="abs"ope="5-2-100" lib="true"></math-calc> 
         <new-alrt txt="Are you programmer ?" mode="prompt"></new-alrt>
