@@ -12,7 +12,8 @@ class Var extends HTMLElement {
 }
 class Const extends HTMLElement {
     connectedCallback() {
-        consts[this.getAttribute("var")] = eval(this.getAttribute("value"))
+        vars[this.getAttribute("name")] = eval(this.innerHTML);
+        this.innerHTML = ''
     }
 }
     // PROGRAMMING NASICS
@@ -126,17 +127,12 @@ class Alert extends HTMLElement{
 
 // DEFINE DECLARED TAGS
 const tags = {
-    // ds
     "use-var":Var,
     "def-const":Const,
-    // pb
     "if-condition":Condition,
     "repeate-times":Repeate,
-    // mo
     "use-procedure":Procedure,
-    // mf
     "math-calc":MathCalc,
-    // pre
     "print-eval":Print,
     "new-alrt":Alert
 }
