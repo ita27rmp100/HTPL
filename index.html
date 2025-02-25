@@ -11,7 +11,7 @@
 <body>
     <!-- define a variable and do math operation -->
     <use-var name="i">78</use-var>
-    <math-calc elem="abs"ope="vars['i']-100" lib="true"></math-calc>
+    <math-calc elem="abs" lib="true">"vars['i']-100"</math-calc>
     <small>Math operation using math-calc tag</small>
     <!-- declare a procedure that ask about age and than write a specific meg according to answer -->
     <use-procedure type="declare" name="mod">
@@ -25,7 +25,7 @@
     </use-procedure>
     <!-- repeat what we declare in procedure three times -->
     <h2>Use procedure :</h2>
-    <repeate-times times="3">
+    <repeate-times times="0">
         <use-procedure name="mod" type="define"></use-procedure>
     </repeate-times>
     <script src="script.js"></script>

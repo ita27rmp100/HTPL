@@ -79,10 +79,12 @@ class Procedure extends HTMLElement {
     // MATH OPERATIONS TAG
 class MathCalc extends HTMLElement{
     connectedCallback(){
+        let iHTML = this.innerHTML
+        this.innerHTML = ''
         if (String(this.getAttribute("lib")) =="true") {
-            this.innerHTML = eval("Math."+this.getAttribute("elem")+"("+this.getAttribute('ope')+")")   
+            this.innerHTML = eval(`Math.${this.getAttribute("elem")}(${eval(iHTML)})`)   
         } else {
-            this.innerHTML = eval(this.getAttribute('ope'))   
+            this.innerHTML = eval(iHTML)   
         }
     }
 }
