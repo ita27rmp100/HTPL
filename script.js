@@ -20,13 +20,14 @@ class Condition extends HTMLElement{
     render(){
         let condition = this.getAttribute("condition");
         let content = this.innerHTML
+        let state = this.getAttribute("state")
         this.innerHTML = ''
-        if (String(eval(condition))){
+        if (String(eval(condition))==state){
             this.innerHTML = content
         }
     }
     connectedCallback(){
-        this.render()
+        requestAnimationFrame(() => this.render());
     }
     static get ObservedAttributes(){
         return ["condition"]

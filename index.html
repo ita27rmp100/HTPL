@@ -10,12 +10,12 @@
 </head>
 <body>
     <new-alrt mode="prompt">how alod are u ?</new-alrt>
-    <if-condition condition="Number(vars['prompt'])>18">
+    <if-condition condition="Number(vars['prompt'])>18" state="true">
         <print-eval>"adult"</print-eval>
     </if-condition>
-    <!-- <if-condition condition="Number(vars['prompt'])==18">
+    <if-condition condition="Number(vars['prompt'])>18" state="false">
         <print-eval>"young"</print-eval>
-    </if-condition> -->
+    </if-condition>
     <use-procedure type="declare" name="mod">
         
     </use-procedure>
