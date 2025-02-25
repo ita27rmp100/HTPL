@@ -81,6 +81,7 @@ class MathCalc extends HTMLElement{
     connectedCallback(){
         let iHTML = this.innerHTML
         this.innerHTML = ''
+        $(this).css("display", "block");
         if (String(this.getAttribute("lib")) =="true") {
             this.innerHTML = eval(`Math.${this.getAttribute("elem")}(${eval(iHTML)})`)   
         } else {
@@ -91,6 +92,7 @@ class MathCalc extends HTMLElement{
     // predefined functions-tags
 class Print extends HTMLElement{
     render(){
+        $(this).css("display", "block");
         let iHTML = this.innerHTML
         this.innerHTML = eval(iHTML)
     }

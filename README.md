@@ -39,7 +39,8 @@ To utilize HTPL in your project:
  </li>
 </ol>
 
-<h2>How to use ?</h2> <small>look at 'index.html' file to undertand better</small>
+<h2>How to use ?</h2><br>
+<small>look at 'index.html' file to undertand better</small>
 <table>
   <thead>
     <tr>
@@ -103,5 +104,5 @@ For a detailed walkthrough and demonstration, refer to the project explanation v
 <h2>Contributing</h2>
 Contributions are welcome! If you have suggestions or improvements, feel free to submit a pull request or open an issue.
 
-<h2 align="left">SUPPORT ME :</h2>
+<h2 align="left">Support :</h2>
 <p><a href="https://ko-fi.com/ita27rmp100"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="ita27rmp100" /></a></p><br><br>
