@@ -20,9 +20,8 @@ class Condition extends HTMLElement{
     render(){
         let condition = this.getAttribute("condition");
         let content = this.innerHTML
-        let state = this.getAttribute("state")
         this.innerHTML = ''
-        if (String(eval(condition))==state){
+        if (String(eval(condition))){
             this.innerHTML = content
         }
     }
@@ -103,7 +102,8 @@ class Print extends HTMLElement{
 class Alert extends HTMLElement{
     connectedCallback(){
         let mode = this.getAttribute("mode") ;
-        var txt = this.getAttribute("txt")
+        let txt = this.innerHTML
+        this.innerHTML = ''
         if (!$(this).parent().is("[type='declare']")) {
             switch (mode) {
                 case "alert":

@@ -9,13 +9,17 @@
     <title>HTMPL | test</title>
 </head>
 <body>
-    <use-var var="i" value="4"></use-var>
-    <if-condition condition="vars['i']<6" state="true">
-        <print-eval>"added var successfully"</print-eval>
+    <new-alrt mode="prompt">how alod are u ?</new-alrt>
+    <if-condition condition="Number(vars['prompt'])>18">
+        <print-eval>"adult"</print-eval>
     </if-condition>
-    <if-condition condition="vars['i']<6" state="false">
-        <print-eval>"Not successfully"</print-eval>
-    </if-condition>
+    <!-- <if-condition condition="Number(vars['prompt'])==18">
+        <print-eval>"young"</print-eval>
+    </if-condition> -->
+    <use-procedure type="declare" name="mod">
+        
+    </use-procedure>
+    <use-procedure name="mod" type="define"></use-procedure>
     <script src="script.js"></script>
 </body>
 </html>
