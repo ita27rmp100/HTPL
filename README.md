@@ -98,10 +98,10 @@ To utilize HTPL in your project:
 </table>
 
 For a detailed walkthrough and demonstration, refer to the project explanation video: <br>
-<a href="https://www.youtube.com/watch?v=S_e1DulC72w&ab_channel=%D8%A7%D9%84%D9%85%D8%A8%D8%B1%D9%85%D8%AC%D8%B9%D8%A8%D8%AF%D8%A7%D9%84%D8%B1%D8%AD%D9%8A%D9%85">overview video in arabic</a> <br><br>
-<a href="#">overview video in english (soon inshallah 🔜)</a>
+<a href="https://www.youtube.com/playlist?list=PLHWcjlt7orKatklEck5O4SWPp1t2mglyr">overview playlist</a> <br>
 
 <h2>Contributing</h2>
 Contributions are welcome! If you have suggestions or improvements, feel free to submit a pull request or open an issue.
 
-<h5>New updates will be shared next days inshallah 🔜🔥</h5>
+<h2 align="left">SUPPORT ME :</h2>
+<p><a href="https://ko-fi.com/ita27rmp100"> <img align="left" src="https://cdn.ko-fi.com/cdn/kofi3.png?v=3" height="50" width="210" alt="ita27rmp100" /></a></p><br><br>
