@@ -12,6 +12,7 @@
     <!-- define a variable and do math operation -->
     <use-var name="i">78</use-var>
     <math-calc elem="abs"ope="vars['i']-100" lib="true"></math-calc>
+    <small>Math operation using math-calc tag</small>
     <!-- declare a procedure that ask about age and than write a specific meg according to answer -->
     <use-procedure type="declare" name="mod">
         <new-alrt mode="prompt">how alod are u ?</new-alrt>
@@ -23,6 +24,7 @@
         </if-condition>  
     </use-procedure>
     <!-- repeat what we declare in procedure three times -->
+    <h2>Use procedure :</h2>
     <repeate-times times="3">
         <use-procedure name="mod" type="define"></use-procedure>
     </repeate-times>
