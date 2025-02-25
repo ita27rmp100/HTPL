@@ -75,16 +75,6 @@ To utilize HTPL in your project:
       <td>&lt;use-procedure type="&lt;declare | define&gt;"&gt;&lt;code&gt;&lt;/use-procedure&gt;</td>
     </tr>
     <tr>
-      <td>call-procedure</td>
-      <td>Call an existing procedure</td>
-      <td>&lt;call-procedure name="&lt;procedureName&gt;"&gt;&lt;/call-procedure&gt;</td>
-    </tr>
-    <tr>
-      <td>return</td>
-      <td>Return a value from a procedure</td>
-      <td>&lt;return&gt;&lt;value&gt;&lt;/return&gt;</td>
-    </tr>
-    <tr>
       <td>while-loop</td>
       <td>Loop statement with a condition</td>
       <td>&lt;while-loop condition="&lt;condition&gt;"&gt;&lt;/while-loop&gt;</td>
