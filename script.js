@@ -6,7 +6,8 @@ let procedures = {}
     // DATA STARUTURE CLASSES
 class Var extends HTMLElement {
     connectedCallback() {
-        vars[this.getAttribute("var")] = eval(this.getAttribute("value"));
+        vars[this.getAttribute("name")] = eval(this.innerHTML);
+        this.innerHTML = ''
     }
 }
 class Const extends HTMLElement {

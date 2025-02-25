@@ -6,20 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="jquery-3.7.0.min.js"></script>
-    <title>HTMPL | test</title>
+    <title>HTMPL | example</title>
 </head>
 <body>
-    <new-alrt mode="prompt">how alod are u ?</new-alrt>
-    <if-condition condition="Number(vars['prompt'])>18" state="true">
-        <print-eval>"adult"</print-eval>
-    </if-condition>
-    <if-condition condition="Number(vars['prompt'])>18" state="false">
-        <print-eval>"young"</print-eval>
-    </if-condition>
+    <!-- define a variable and do math operation -->
+    <use-var name="i">78</use-var>
+    <math-calc elem="abs"ope="vars['i']-100" lib="true"></math-calc>
+    <!-- declare a procedure that ask about age and than write a specific meg according to answer -->
     <use-procedure type="declare" name="mod">
-        
+        <new-alrt mode="prompt">how alod are u ?</new-alrt>
+        <if-condition condition="Number(vars['prompt'])>18" state="true">
+            <print-eval>"adult"</print-eval>
+        </if-condition>
+        <if-condition condition="Number(vars['prompt'])>18" state="false">
+            <print-eval>"young"</print-eval>
+        </if-condition>  
     </use-procedure>
-    <use-procedure name="mod" type="define"></use-procedure>
+    <!-- repeat what we declare in procedure three times -->
+    <repeate-times times="3">
+        <use-procedure name="mod" type="define"></use-procedure>
+    </repeate-times>
     <script src="script.js"></script>
 </body>
 </html>
